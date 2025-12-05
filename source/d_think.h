@@ -21,18 +21,20 @@
 #pragma interface
 #endif
 
+typedef struct mobj_s mobj_t; // Ouch
+
 //
 // Experimental stuff.
 // To compile this as "ANSI C with classes" we will need to handle the various
 //  action functions cleanly.
 //
 typedef void (*actionf_v)();
-typedef void (*actionf_p1)(void *);
+typedef void (*actionf_p1)(mobj_t *);
 
 typedef union
 {
-	actionf_v acv;
 	actionf_p1 acp1;
+	actionf_v acv;
 } actionf_t;
 
 // Historically, "think_t" is yet another function pointer to a routine

@@ -63,7 +63,7 @@ CFLAGS	:=	-g -Wall -O3 -mword-relocations \
 DEFINES	:=	-D__3DS__  -DNDS_VERS_STRING=\"$(VERS_STRING)\" \
 			-D_NDS -DNONET -DNO_IPV6 -DNOHS -DNOMD5 -DHAVE_BLUA -DHWRENDER -DNOPOSTPROCESSING -DNOSPLITSCREEN -DDIAGNOSTIC
 
-CFLAGS	+=	$(INCLUDE) $(DEFINES)
+CFLAGS	+=	$(INCLUDE) $(DEFINES) -save-temps=obj
 
 CXXFLAGS	:= $(CFLAGS) -fno-rtti -fno-exceptions -std=gnu++11
 

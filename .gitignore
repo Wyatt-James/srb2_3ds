@@ -1,0 +1,9 @@
+.vscode
+build_logs
+build_scripts
+build_flags.txt
+build
+*.3dsx
+*.cia
+*.elf
+*.smdh

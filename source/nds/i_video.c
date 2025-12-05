@@ -40,6 +40,8 @@
 #include "r_queue.h"
 #include "r_texcache.h"
 #include "nds_utils.h"
+#include "i_system.h"
+#include "nds_misc_forward_declarations.h"
 
 #define GPU_CMDBUF_SIZE		(1024 * 1024 * 8)
 #define GPU_GXQUEUE_SIZE	512
@@ -296,11 +298,6 @@ void NDS3DVIDEO_FinishUpdate(INT32 waitvbl)
 	}
 }
 
-void NDS3DVIDEO_Stub(void)
-{
-
-}
-
 void workerThreadEntry(void *arg)
 {
 	s32 curCPU = svcGetProcessorID();
@@ -382,7 +379,7 @@ bool spawnWorkerThread(void)
 	return true;
 }
 
-boolean NDS3DVIDEO_Init()
+boolean NDS3DVIDEO_Init(I_Error_t ErrorFunction)
 {	
 	NDS3D_driverLog("NDS3DVIDEO_Init\n");
 
@@ -937,6 +934,17 @@ void NDS3DVIDEO_DoScreenWipe(float counter)
 }
 */
 
+// Stubs
+void NDS3DVIDEO_Stub(void){}
+void NDS3DVIDEO_pfnDraw2DLine_STUB(F2DCoord *v1, F2DCoord *v2, RGBA_t Color){}
+void NDS3DVIDEO_pfnReadRect_STUB(INT32 x, INT32 y, INT32 width, INT32 height, INT32 dst_stride, UINT16 *dst_data){}
+void NDS3DVIDEO_pfnGClipRect_STUB(INT32 minx, INT32 miny, INT32 maxx, INT32 maxy, float nearclip){}
+void NDS3DVIDEO_pfnDrawMD2_STUB(INT32 *gl_cmd_buffer, md2_frame_t *frame, FTransform *pos, float scale){}
+void NDS3DVIDEO_pfnDrawMD2i_STUB(INT32 *gl_cmd_buffer, md2_frame_t *frame, INT32 duration, INT32 tics, md2_frame_t *nextframe, FTransform *pos, float scale, UINT8 flipped, UINT8 *color){}
+void NDS3DVIDEO_pfnDoScreenWipe_STUB(float alpha){}
+void NDS3DVIDEO_(int width, int height){}
+void NDS3DVIDEO_pfnDrawScreenFinalTexture_STUB(int width, int height){}
+
 void I_StartupGraphics(void)
 {
 	vid.width = 400;
@@ -948,29 +956,29 @@ void I_StartupGraphics(void)
 	HWD.pfnInit             = NDS3DVIDEO_Init;
 	HWD.pfnShutdown         = NDS3DVIDEO_Shutdown;
 	HWD.pfnFinishUpdate     = NDS3DVIDEO_FinishUpdate;
-	HWD.pfnDraw2DLine       = NDS3DVIDEO_Stub;
+	HWD.pfnDraw2DLine       = NDS3DVIDEO_pfnDraw2DLine_STUB;
 	HWD.pfnDrawPolygon      = NDS3DVIDEO_DrawPolygon;
 	HWD.pfnSetBlend         = NDS3DVIDEO_SetBlend;
 	HWD.pfnClearBuffer      = NDS3DVIDEO_ClearBuffer;
 	HWD.pfnSetTexture       = NDS3DVIDEO_SetTexture;
-	HWD.pfnReadRect         = NDS3DVIDEO_Stub;
-	HWD.pfnGClipRect        = NDS3DVIDEO_Stub;
+	HWD.pfnReadRect         = NDS3DVIDEO_pfnReadRect_STUB;
+	HWD.pfnGClipRect        = NDS3DVIDEO_pfnGClipRect_STUB;
 	HWD.pfnClearMipMapCache = NDS3DVIDEO_ClearMipMapCache;
 	HWD.pfnSetSpecialState  = NDS3DVIDEO_SetSpecialState;
 	HWD.pfnSetPalette       = NDS3DVIDEO_SetPalette;
 	HWD.pfnGetTextureUsed   = NDS3DVIDEO_GetTextureUsed;
-	HWD.pfnDrawMD2          = NDS3DVIDEO_Stub;
-	HWD.pfnDrawMD2i         = NDS3DVIDEO_Stub;
+	HWD.pfnDrawMD2          = NDS3DVIDEO_pfnDrawMD2_STUB;
+	HWD.pfnDrawMD2i         = NDS3DVIDEO_pfnDrawMD2i_STUB;
 	HWD.pfnSetTransform     = NDS3DVIDEO_SetTransform;
 	HWD.pfnGetRenderVersion = NDS3DVIDEO_GetRenderVersion;
 	HWD.pfnFlushScreenTextures                       = NDS3DVIDEO_FlushScreenTextures;
 	HWD.pfnStartScreenWipe                           = NDS3DVIDEO_Stub;
 	HWD.pfnEndScreenWipe                             = NDS3DVIDEO_Stub;
-	HWD.pfnDoScreenWipe                              = NDS3DVIDEO_Stub;
+	HWD.pfnDoScreenWipe                              = NDS3DVIDEO_pfnDoScreenWipe_STUB;
 	HWD.pfnDrawIntermissionBG                        = NDS3DVIDEO_Stub;
 	HWD.pfnMakeScreenTexture                         = NDS3DVIDEO_Stub;
 	HWD.pfnMakeScreenFinalTexture                    = NDS3DVIDEO_Stub;
-	HWD.pfnDrawScreenFinalTexture                    = NDS3DVIDEO_Stub;
+	HWD.pfnDrawScreenFinalTexture                    = NDS3DVIDEO_pfnDrawScreenFinalTexture_STUB;
 	
 
 	CV_RegisterVar(&cv_vidwait);

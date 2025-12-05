@@ -81,5 +81,6 @@ void NDS3D_DrawIntermissionBG(void);
 void NDS3D_MakeScreenTexture(void);
 void NDS3D_MakeScreenFinalTexture(void);
 void NDS3D_DrawScreenFinalTexture(int width, int height);
+void *NDS3D_InitVertexBuffer(const size_t geoBufSize);
 
 #endif

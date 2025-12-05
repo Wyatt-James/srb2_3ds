@@ -19,195 +19,197 @@
 #include "sounds.h"
 #include "m_fixed.h"
 
+typedef struct mobj_s mobj_t; // Ouch
+
 // dehacked.c now has lists for the more named enums! PLEASE keep them up to date!
 // For great modding!!
 
 // IMPORTANT NOTE: If you add/remove from this list of action
 // functions, don't forget to update them in dehacked.c!
-void A_Explode();
-void A_Pain();
-void A_Fall();
-void A_MonitorPop();
-void A_Look();
-void A_Chase();
-void A_FaceStabChase();
-void A_FaceTarget();
-void A_FaceTracer();
-void A_Scream();
-void A_BossDeath();
-void A_CustomPower(); // Use this for a custom power
-void A_GiveWeapon(); // Gives the player weapon(s)
-void A_JumpShield(); // Obtained Jump Shield
-void A_RingShield(); // Obtained Ring Shield
-void A_RingBox(); // Obtained Ring Box Tails
-void A_Invincibility(); // Obtained Invincibility Box
-void A_SuperSneakers(); // Obtained Super Sneakers Box
-void A_BunnyHop(); // have bunny hop tails
-void A_BubbleSpawn(); // Randomly spawn bubbles
-void A_FanBubbleSpawn();
-void A_BubbleRise(); // Bubbles float to surface
-void A_BubbleCheck(); // Don't draw if not underwater
-void A_AwardScore();
-void A_ExtraLife(); // Extra Life
-void A_BombShield(); // Obtained Bomb Shield
-void A_WaterShield(); // Obtained Water Shield
-void A_ForceShield(); // Obtained Force Shield
-void A_PityShield(); // Obtained Pity Shield. We're... sorry.
-void A_GravityBox();
-void A_ScoreRise(); // Rise the score logo
-void A_ParticleSpawn();
-void A_AttractChase(); // Ring Chase
-void A_DropMine(); // Drop Mine from Skim or Jetty-Syn Bomber
-void A_FishJump(); // Fish Jump
-void A_ThrownRing(); // Sparkle trail for red ring
-void A_SetSolidSteam();
-void A_UnsetSolidSteam();
-void A_SignPlayer();
-void A_OverlayThink();
-void A_JetChase();
-void A_JetbThink(); // Jetty-Syn Bomber Thinker
-void A_JetgThink(); // Jetty-Syn Gunner Thinker
-void A_JetgShoot(); // Jetty-Syn Shoot Function
-void A_ShootBullet(); // JetgShoot without reactiontime setting
-void A_MinusDigging();
-void A_MinusPopup();
-void A_MinusCheck();
-void A_ChickenCheck();
-void A_MouseThink(); // Mouse Thinker
-void A_DetonChase(); // Deton Chaser
-void A_CapeChase(); // Fake little Super Sonic cape
-void A_RotateSpikeBall(); // Spike ball rotation
-void A_SlingAppear();
-void A_MaceRotate();
-void A_UnidusBall();
-void A_RockSpawn();
-void A_SetFuse();
-void A_CrawlaCommanderThink(); // Crawla Commander
-void A_SmokeTrailer();
-void A_RingExplode();
-void A_OldRingExplode();
-void A_MixUp();
-void A_RecyclePowers();
-void A_BossScream();
-void A_Boss2TakeDamage();
-void A_GoopSplat();
-void A_Boss2PogoSFX();
-void A_Boss2PogoTarget();
-void A_EggmanBox();
-void A_TurretFire();
-void A_SuperTurretFire();
-void A_TurretStop();
-void A_JetJawRoam();
-void A_JetJawChomp();
-void A_PointyThink();
-void A_CheckBuddy();
-void A_HoodThink();
-void A_ArrowCheck();
-void A_SnailerThink();
-void A_SharpChase();
-void A_SharpSpin();
-void A_VultureVtol();
-void A_VultureCheck();
-void A_SkimChase();
-void A_SkullAttack();
-void A_LobShot();
-void A_FireShot();
-void A_SuperFireShot();
-void A_BossFireShot();
-void A_Boss7FireMissiles();
-void A_Boss1Laser();
-void A_FocusTarget();
-void A_Boss4Reverse();
-void A_Boss4SpeedUp();
-void A_Boss4Raise();
-void A_SparkFollow();
-void A_BuzzFly();
-void A_GuardChase();
-void A_EggShield();
-void A_SetReactionTime();
-void A_Boss1Spikeballs();
-void A_Boss3TakeDamage();
-void A_Boss3Path();
-void A_LinedefExecute();
-void A_PlaySeeSound();
-void A_PlayAttackSound();
-void A_PlayActiveSound();
-void A_1upThinker();
-void A_BossZoom(); //Unused
-void A_Boss1Chase();
-void A_Boss2Chase();
-void A_Boss2Pogo();
-void A_Boss7Chase();
-void A_BossJetFume();
-void A_SpawnObjectAbsolute();
-void A_SpawnObjectRelative();
-void A_ChangeAngleRelative();
-void A_ChangeAngleAbsolute();
-void A_PlaySound();
-void A_FindTarget();
-void A_FindTracer();
-void A_SetTics();
-void A_SetRandomTics();
-void A_ChangeColorRelative();
-void A_ChangeColorAbsolute();
-void A_MoveRelative();
-void A_MoveAbsolute();
-void A_Thrust();
-void A_ZThrust();
-void A_SetTargetsTarget();
-void A_SetObjectFlags();
-void A_SetObjectFlags2();
-void A_RandomState();
-void A_RandomStateRange();
-void A_DualAction();
-void A_RemoteAction();
-void A_ToggleFlameJet();
-void A_OrbitNights();
-void A_GhostMe();
-void A_SetObjectState();
-void A_SetObjectTypeState();
-void A_KnockBack();
-void A_PushAway();
-void A_RingDrain();
-void A_SplitShot();
-void A_MissileSplit();
-void A_MultiShot();
-void A_InstaLoop();
-void A_Custom3DRotate();
-void A_SearchForPlayers();
-void A_CheckRandom();
-void A_CheckTargetRings();
-void A_CheckRings();
-void A_CheckTotalRings();
-void A_CheckHealth();
-void A_CheckRange();
-void A_CheckHeight();
-void A_CheckTrueRange();
-void A_CheckThingCount();
-void A_CheckAmbush();
-void A_CheckCustomValue();
-void A_CheckCusValMemo();
-void A_SetCustomValue();
-void A_UseCusValMemo();
-void A_RelayCustomValue();
-void A_CusValAction();
-void A_ForceStop();
-void A_ForceWin();
-void A_SpikeRetract();
-void A_InfoState();
-void A_Repeat();
-void A_SetScale();
-void A_RemoteDamage();
-void A_HomingChase();
-void A_TrapShot();
-void A_VileTarget();
-void A_VileAttack();
-void A_VileFire();
-void A_BrakChase();
-void A_BrakFireShot();
-void A_BrakLobShot();
-void A_NapalmScatter();
-void A_SpawnFreshCopy();
+void A_Explode(mobj_t *actor);
+void A_Pain(mobj_t *actor);
+void A_Fall(mobj_t *actor);
+void A_MonitorPop(mobj_t *actor);
+void A_Look(mobj_t *actor);
+void A_Chase(mobj_t *actor);
+void A_FaceStabChase(mobj_t *actor);
+void A_FaceTarget(mobj_t *actor);
+void A_FaceTracer(mobj_t *actor);
+void A_Scream(mobj_t *actor);
+void A_BossDeath(mobj_t *actor);
+void A_CustomPower(mobj_t *actor); // Use this for a custom power
+void A_GiveWeapon(mobj_t *actor); // Gives the player weapon(s)
+void A_JumpShield(mobj_t *actor); // Obtained Jump Shield
+void A_RingShield(mobj_t *actor); // Obtained Ring Shield
+void A_RingBox(mobj_t *actor); // Obtained Ring Box Tails
+void A_Invincibility(mobj_t *actor); // Obtained Invincibility Box
+void A_SuperSneakers(mobj_t *actor); // Obtained Super Sneakers Box
+void A_BunnyHop(mobj_t *actor); // have bunny hop tails
+void A_BubbleSpawn(mobj_t *actor); // Randomly spawn bubbles
+void A_FanBubbleSpawn(mobj_t *actor);
+void A_BubbleRise(mobj_t *actor); // Bubbles float to surface
+void A_BubbleCheck(mobj_t *actor); // Don't draw if not underwater
+void A_AwardScore(mobj_t *actor);
+void A_ExtraLife(mobj_t *actor); // Extra Life
+void A_BombShield(mobj_t *actor); // Obtained Bomb Shield
+void A_WaterShield(mobj_t *actor); // Obtained Water Shield
+void A_ForceShield(mobj_t *actor); // Obtained Force Shield
+void A_PityShield(mobj_t *actor); // Obtained Pity Shield. We're... sorry.
+void A_GravityBox(mobj_t *actor);
+void A_ScoreRise(mobj_t *actor); // Rise the score logo
+void A_ParticleSpawn(mobj_t *actor);
+void A_AttractChase(mobj_t *actor); // Ring Chase
+void A_DropMine(mobj_t *actor); // Drop Mine from Skim or Jetty-Syn Bomber
+void A_FishJump(mobj_t *actor); // Fish Jump
+void A_ThrownRing(mobj_t *actor); // Sparkle trail for red ring
+void A_SetSolidSteam(mobj_t *actor);
+void A_UnsetSolidSteam(mobj_t *actor);
+void A_SignPlayer(mobj_t *actor);
+void A_OverlayThink(mobj_t *actor);
+void A_JetChase(mobj_t *actor);
+void A_JetbThink(mobj_t *actor); // Jetty-Syn Bomber Thinker
+void A_JetgThink(mobj_t *actor); // Jetty-Syn Gunner Thinker
+void A_JetgShoot(mobj_t *actor); // Jetty-Syn Shoot Function
+void A_ShootBullet(mobj_t *actor); // JetgShoot without reactiontime setting
+void A_MinusDigging(mobj_t *actor);
+void A_MinusPopup(mobj_t *actor);
+void A_MinusCheck(mobj_t *actor);
+void A_ChickenCheck(mobj_t *actor);
+void A_MouseThink(mobj_t *actor); // Mouse Thinker
+void A_DetonChase(mobj_t *actor); // Deton Chaser
+void A_CapeChase(mobj_t *actor); // Fake little Super Sonic cape
+void A_RotateSpikeBall(mobj_t *actor); // Spike ball rotation
+void A_SlingAppear(mobj_t *actor);
+void A_MaceRotate(mobj_t *actor);
+void A_UnidusBall(mobj_t *actor);
+void A_RockSpawn(mobj_t *actor);
+void A_SetFuse(mobj_t *actor);
+void A_CrawlaCommanderThink(mobj_t *actor); // Crawla Commander
+void A_SmokeTrailer(mobj_t *actor);
+void A_RingExplode(mobj_t *actor);
+void A_OldRingExplode(mobj_t *actor);
+void A_MixUp(mobj_t *actor);
+void A_RecyclePowers(mobj_t *actor);
+void A_BossScream(mobj_t *actor);
+void A_Boss2TakeDamage(mobj_t *actor);
+void A_GoopSplat(mobj_t *actor);
+void A_Boss2PogoSFX(mobj_t *actor);
+void A_Boss2PogoTarget(mobj_t *actor);
+void A_EggmanBox(mobj_t *actor);
+void A_TurretFire(mobj_t *actor);
+void A_SuperTurretFire(mobj_t *actor);
+void A_TurretStop(mobj_t *actor);
+void A_JetJawRoam(mobj_t *actor);
+void A_JetJawChomp(mobj_t *actor);
+void A_PointyThink(mobj_t *actor);
+void A_CheckBuddy(mobj_t *actor);
+void A_HoodThink(mobj_t *actor);
+void A_ArrowCheck(mobj_t *actor);
+void A_SnailerThink(mobj_t *actor);
+void A_SharpChase(mobj_t *actor);
+void A_SharpSpin(mobj_t *actor);
+void A_VultureVtol(mobj_t *actor);
+void A_VultureCheck(mobj_t *actor);
+void A_SkimChase(mobj_t *actor);
+void A_SkullAttack(mobj_t *actor);
+void A_LobShot(mobj_t *actor);
+void A_FireShot(mobj_t *actor);
+void A_SuperFireShot(mobj_t *actor);
+void A_BossFireShot(mobj_t *actor);
+void A_Boss7FireMissiles(mobj_t *actor);
+void A_Boss1Laser(mobj_t *actor);
+void A_FocusTarget(mobj_t *actor);
+void A_Boss4Reverse(mobj_t *actor);
+void A_Boss4SpeedUp(mobj_t *actor);
+void A_Boss4Raise(mobj_t *actor);
+void A_SparkFollow(mobj_t *actor);
+void A_BuzzFly(mobj_t *actor);
+void A_GuardChase(mobj_t *actor);
+void A_EggShield(mobj_t *actor);
+void A_SetReactionTime(mobj_t *actor);
+void A_Boss1Spikeballs(mobj_t *actor);
+void A_Boss3TakeDamage(mobj_t *actor);
+void A_Boss3Path(mobj_t *actor);
+void A_LinedefExecute(mobj_t *actor);
+void A_PlaySeeSound(mobj_t *actor);
+void A_PlayAttackSound(mobj_t *actor);
+void A_PlayActiveSound(mobj_t *actor);
+void A_1upThinker(mobj_t *actor);
+void A_BossZoom(mobj_t *actor); //Unused
+void A_Boss1Chase(mobj_t *actor);
+void A_Boss2Chase(mobj_t *actor);
+void A_Boss2Pogo(mobj_t *actor);
+void A_Boss7Chase(mobj_t *actor);
+void A_BossJetFume(mobj_t *actor);
+void A_SpawnObjectAbsolute(mobj_t *actor);
+void A_SpawnObjectRelative(mobj_t *actor);
+void A_ChangeAngleRelative(mobj_t *actor);
+void A_ChangeAngleAbsolute(mobj_t *actor);
+void A_PlaySound(mobj_t *actor);
+void A_FindTarget(mobj_t *actor);
+void A_FindTracer(mobj_t *actor);
+void A_SetTics(mobj_t *actor);
+void A_SetRandomTics(mobj_t *actor);
+void A_ChangeColorRelative(mobj_t *actor);
+void A_ChangeColorAbsolute(mobj_t *actor);
+void A_MoveRelative(mobj_t *actor);
+void A_MoveAbsolute(mobj_t *actor);
+void A_Thrust(mobj_t *actor);
+void A_ZThrust(mobj_t *actor);
+void A_SetTargetsTarget(mobj_t *actor);
+void A_SetObjectFlags(mobj_t *actor);
+void A_SetObjectFlags2(mobj_t *actor);
+void A_RandomState(mobj_t *actor);
+void A_RandomStateRange(mobj_t *actor);
+void A_DualAction(mobj_t *actor);
+void A_RemoteAction(mobj_t *actor);
+void A_ToggleFlameJet(mobj_t *actor);
+void A_OrbitNights(mobj_t *actor);
+void A_GhostMe(mobj_t *actor);
+void A_SetObjectState(mobj_t *actor);
+void A_SetObjectTypeState(mobj_t *actor);
+void A_KnockBack(mobj_t *actor);
+void A_PushAway(mobj_t *actor);
+void A_RingDrain(mobj_t *actor);
+void A_SplitShot(mobj_t *actor);
+void A_MissileSplit(mobj_t *actor);
+void A_MultiShot(mobj_t *actor);
+void A_InstaLoop(mobj_t *actor);
+void A_Custom3DRotate(mobj_t *actor);
+void A_SearchForPlayers(mobj_t *actor);
+void A_CheckRandom(mobj_t *actor);
+void A_CheckTargetRings(mobj_t *actor);
+void A_CheckRings(mobj_t *actor);
+void A_CheckTotalRings(mobj_t *actor);
+void A_CheckHealth(mobj_t *actor);
+void A_CheckRange(mobj_t *actor);
+void A_CheckHeight(mobj_t *actor);
+void A_CheckTrueRange(mobj_t *actor);
+void A_CheckThingCount(mobj_t *actor);
+void A_CheckAmbush(mobj_t *actor);
+void A_CheckCustomValue(mobj_t *actor);
+void A_CheckCusValMemo(mobj_t *actor);
+void A_SetCustomValue(mobj_t *actor);
+void A_UseCusValMemo(mobj_t *actor);
+void A_RelayCustomValue(mobj_t *actor);
+void A_CusValAction(mobj_t *actor);
+void A_ForceStop(mobj_t *actor);
+void A_ForceWin(mobj_t *actor);
+void A_SpikeRetract(mobj_t *actor);
+void A_InfoState(mobj_t *actor);
+void A_Repeat(mobj_t *actor);
+void A_SetScale(mobj_t *actor);
+void A_RemoteDamage(mobj_t *actor);
+void A_HomingChase(mobj_t *actor);
+void A_TrapShot(mobj_t *actor);
+void A_VileTarget(mobj_t *actor);
+void A_VileAttack(mobj_t *actor);
+void A_VileFire(mobj_t *actor);
+void A_BrakChase(mobj_t *actor);
+void A_BrakFireShot(mobj_t *actor);
+void A_BrakLobShot(mobj_t *actor);
+void A_NapalmScatter(mobj_t *actor);
+void A_SpawnFreshCopy(mobj_t *actor);
 
 // ratio of states to sprites to mobj types is roughly 6 : 1 : 1
 #define NUMMOBJFREESLOTS 256

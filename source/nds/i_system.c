@@ -16,6 +16,8 @@
 #include "../i_joy.h"
 #include "nds_utils.h"
 #include "r_queue.h"
+#include "i_video.h"
+#include "nds_misc_forward_declarations.h" // queueAllocPacketSafe
 
 UINT8 graphics_started = 0;
 UINT8 keyboard_started = 0;

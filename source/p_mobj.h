@@ -19,6 +19,7 @@
 #include "m_fixed.h"
 
 // We need the thinker_t stuff.
+typedef struct mobj_s mobj_t; // Ouch
 #include "d_think.h"
 
 // We need the WAD data structure for Map things, from the THINGS lump.

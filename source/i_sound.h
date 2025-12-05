@@ -132,6 +132,10 @@ void I_InitMusic(void);
 */
 void I_ShutdownMusic(void);
 
+/** \brief Shutdown the dig music systems
+*/
+void I_ShutdownDigMusic(void);
+
 /// ------------------------
 //  MUSIC PROPERTIES
 /// ------------------------

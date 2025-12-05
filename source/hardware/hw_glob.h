@@ -96,6 +96,7 @@ void HWR_FreePolyPool(void);
 void HWR_InitTextureCache(void);
 void HWR_FreeTextureCache(void);
 void HWR_FreeExtraSubsectors(void);
+void HWR_InitVertexBuffer();
 
 void HWR_GetFlat(lumpnum_t flatlumpnum);
 GLTexture_t *HWR_GetTexture(INT32 tex);

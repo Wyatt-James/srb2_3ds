@@ -11,6 +11,7 @@
 #include "../hardware/hw_dll.h"
 #include "../hardware/hw_md2.h"
 #include "../hardware/hw_vcache.h"
+#include "r_nds3d.h"
 
 
 // Dynamic Geometry Buffer
@@ -22,7 +23,7 @@ void HWR_InitVertexBuffer()
 {
 	const size_t geoBufSize = VCACHE_NUM_BUFFERS * MAX_NUM_VECTORS * sizeof(FOutVector);
 
-	geometryBuf = I_InitVertexBuffer(geoBufSize);
+	geometryBuf = NDS3D_InitVertexBuffer(geoBufSize);
 	geometryBufIndex = 0;
 	geometryBufSlot = 0;
 }

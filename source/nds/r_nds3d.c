@@ -26,6 +26,7 @@
 #include <stdlib.h>
 #include <3ds.h>
 #include <citro3d.h>
+void C3Di_RenderQueueWaitDone(void); // Apparently we need to use this internal C3D function
 
 #define __BYTEBOOL__
 #define boolean bool
@@ -165,7 +166,7 @@ static void setScreenMode(bool enable_3d)
 	}
 }
 
-void *I_InitVertexBuffer(const size_t geoBufSize)
+void *NDS3D_InitVertexBuffer(const size_t geoBufSize)
 {
 	geometryBuf = linearAlloc(geoBufSize);
 	if(!geometryBuf)

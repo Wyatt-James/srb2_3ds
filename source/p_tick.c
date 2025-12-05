@@ -248,7 +248,7 @@ void P_RemoveThinker(thinker_t *thinker)
 #ifdef HAVE_BLUA
 	LUA_InvalidateUserdata(thinker);
 #endif
-	thinker->function.acp1 = P_RemoveThinkerDelayed;
+	thinker->function.acp1 = (actionf_p1) P_RemoveThinkerDelayed; // WYATT_TODO this is evil
 }
 
 /*
@@ -299,7 +299,7 @@ static inline void P_RunThinkers(void)
 	for (currentthinker = thinkercap.next; currentthinker != &thinkercap; currentthinker = currentthinker->next)
 	{
 		if (currentthinker->function.acp1)
-			currentthinker->function.acp1(currentthinker);
+			currentthinker->function.acp1((mobj_t*) currentthinker); // WYATT_TODO this is evil
 	}
 }
 

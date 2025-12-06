@@ -8,7 +8,7 @@ extern size_t		geometryBufSlot;
 
 extern void HWR_SwapVertexBuffer();
 
-inline FOutVector *HWR_AllocVertexBuffer(size_t numVectors)
+static inline FOutVector *HWR_AllocVertexBuffer(size_t numVectors)
 {
 	const size_t remaining = MAX_NUM_VECTORS - (geometryBufIndex - geometryBufSlot * MAX_NUM_VECTORS);
 	const size_t bufIndex = geometryBufIndex;
